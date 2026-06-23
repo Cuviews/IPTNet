@@ -34,6 +34,20 @@ python setup.py build install
 cd ../../..
 ```
 
+## Temporary Torchvision Patch
+
+This repository currently includes a temporary `vision.py` compatibility patch for dataset loading. Before running the current code, replace the matching file in your installed torchvision package with the repository copy.
+
+You can locate the installed file with:
+
+```bash
+python -c "import torchvision.datasets.vision as v; print(v.__file__)"
+```
+
+Back up that file first, then copy this repository's `vision.py` over the printed path, which is usually similar to `.../site-packages/torchvision/datasets/vision.py`.
+
+This is a temporary workaround for the current data-loading code. The project will be cleaned up later so it no longer requires modifying files inside torchvision. Sorry for the extra setup complexity while the code is still being organized.
+
 ## Run
 
 The default entry point uses `config/DINO/DINO_4scaleSD.py`:
